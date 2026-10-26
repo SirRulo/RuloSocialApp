@@ -1,0 +1,5 @@
+# Cada proyecto tiene su propio .gitignore (backend/ y frontend/).
+# Esto es por si algo queda en la raíz.
+node_modules/
+.env
+CLAUDE.md
