@@ -4,6 +4,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { RouterLink } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Auth } from '../../servicios/auth';
+import { mensajeDeError } from '../../servicios/mensaje-error';
 import { clavesCoincidenValidator, fechaPasadaValidator } from '../../validators/usuario.validators';
 
 @Component({
@@ -101,21 +102,9 @@ export class Registro implements OnDestroy {
       },
       error: (error: HttpErrorResponse) => {
         this.enviando.set(false);
-        this.mensaje.set(this.textoDelError(error));
+        this.mensaje.set(mensajeDeError(error, 'Ocurrió un error al crear la cuenta.'));
       },
     });
-  }
-
-  // El back manda "message" como texto (409) o como lista (400 del ValidationPipe)
-  textoDelError(error: HttpErrorResponse) {
-    if (error.status === 0) {
-      return 'No pudimos conectarnos con el servidor. Probá de nuevo en un rato.';
-    }
-    const mensaje = error.error?.message;
-    if (Array.isArray(mensaje)) {
-      return mensaje.join('. ');
-    }
-    return mensaje ?? 'Ocurrió un error al crear la cuenta.';
   }
 
   ngOnDestroy(): void {
