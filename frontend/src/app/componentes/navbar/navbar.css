@@ -1,0 +1,46 @@
+.navbar {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
+	padding: 1rem 1.5rem;
+	background-color: var(--superficie);
+	border-bottom: 2px solid var(--borde);
+}
+
+.marca {
+	font-family: var(--fuente-pixel);
+	font-size: 1rem;
+	color: var(--texto);
+}
+
+.marca span {
+	color: var(--primario);
+}
+
+.marca:hover {
+	text-decoration: none;
+}
+
+.links {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1.2rem;
+}
+
+.links a {
+	color: var(--texto-suave);
+	font-weight: 700;
+	border-bottom: 2px solid transparent;
+}
+
+.links a:hover {
+	color: var(--texto);
+	text-decoration: none;
+}
+
+.links a.activo {
+	color: var(--primario);
+	border-bottom-color: var(--primario);
+}

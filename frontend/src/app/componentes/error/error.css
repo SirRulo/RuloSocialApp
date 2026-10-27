@@ -1,0 +1,8 @@
+.error-pantalla {
+	text-align: center;
+}
+
+.error-pantalla h1 {
+	color: var(--acento);
+	font-size: 2rem;
+}

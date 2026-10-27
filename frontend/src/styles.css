@@ -1,1 +1,157 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Space+Mono:wght@400;700&display=swap');
+
+/* Identidad visual: arcade de los 80. Bordes duros y sombras sólidas, sin gradientes */
+:root {
+	--fondo: #0a0a12;
+	--superficie: #141530;
+	--borde: #2c2f6b;
+	--primario: #a347ff;
+	--primario-oscuro: #5b1fa8;
+	--acento: #ff4f8b;
+	--texto: #e8e6ff;
+	--texto-suave: #8f8cb8;
+	--error: #ff5c5c;
+	--ok: #4be0a0;
+	--fuente-pixel: 'Press Start 2P', monospace;
+	--fuente-texto: 'Space Mono', monospace;
+	--sombra: 4px 4px 0 #000;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	font-family: var(--fuente-texto);
+	color: var(--texto);
+	background-color: var(--fondo);
+	line-height: 1.6;
+}
+
+/* Los títulos usan la fuente pixelada en tamaño chico: grande cansa la vista */
+h1,
+h2,
+h3 {
+	font-family: var(--fuente-pixel);
+	font-weight: 400;
+	line-height: 1.5;
+	margin-top: 0;
+}
+
+h1 {
+	font-size: 1.3rem;
+	color: var(--primario);
+}
+
+h2 {
+	font-size: 1rem;
+}
+
+h3 {
+	font-size: 0.8rem;
+}
+
+a {
+	color: var(--primario);
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+/* Botón de arcade: sombra sólida que "se hunde" al hacer clic */
+button {
+	border: 2px solid #000;
+	border-radius: 0;
+	background-color: var(--primario);
+	color: #fff;
+	font-family: var(--fuente-pixel);
+	font-size: 0.7rem;
+	text-transform: uppercase;
+	padding: 0.8rem 1.1rem;
+	cursor: pointer;
+	box-shadow: 4px 4px 0 var(--primario-oscuro);
+	transition: transform 80ms, box-shadow 80ms;
+}
+
+button:hover {
+	background-color: #b56bff;
+}
+
+button:active {
+	transform: translate(4px, 4px);
+	box-shadow: 0 0 0 var(--primario-oscuro);
+}
+
+button:disabled {
+	opacity: 0.5;
+	cursor: not-allowed;
+	transform: none;
+	box-shadow: 4px 4px 0 var(--primario-oscuro);
+}
+
+/* Variante sin relleno, para acciones secundarias (cancelar, salir) */
+button.secundario {
+	background-color: transparent;
+	color: var(--texto);
+	border-color: var(--borde);
+	box-shadow: 4px 4px 0 var(--borde);
+}
+
+button.secundario:hover {
+	border-color: var(--primario);
+}
+
+input,
+select,
+textarea {
+	width: 100%;
+	border: 2px solid var(--borde);
+	border-radius: 0;
+	padding: 0.7rem 0.8rem;
+	font: inherit;
+	color: var(--texto);
+	background-color: var(--fondo);
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+	outline: none;
+	border-color: var(--primario);
+}
+
+input::placeholder,
+textarea::placeholder {
+	color: var(--texto-suave);
+}
+
+label {
+	display: block;
+	margin-bottom: 0.3rem;
+	font-weight: 700;
+}
+
+/* Caja base de la app: formularios, tarjetas de publicación, perfil */
+.panel {
+	background-color: var(--superficie);
+	border: 2px solid var(--borde);
+	box-shadow: var(--sombra);
+	padding: 1.5rem;
+}
+
+.ayuda {
+	color: var(--texto-suave);
+	font-size: 0.85rem;
+}
+
+.error {
+	color: var(--error);
+	font-size: 0.85rem;
+}
+
+.ok {
+	color: var(--ok);
+}
