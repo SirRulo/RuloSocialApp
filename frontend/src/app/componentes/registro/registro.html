@@ -1,4 +1,106 @@
-<section class="panel">
-  <h1>Crear cuenta</h1>
-  <p class="ayuda">Acá va el formulario de registro (paso 6).</p>
+<section class="panel registro">
+  @if (registrado()) {
+    <h1>¡Cuenta creada!</h1>
+    <p>Ya sos parte de RuloSocial. Ahora podés ingresar con tu nombre de usuario.</p>
+    <a routerLink="/login">Ir a ingresar</a>
+  } @else {
+    <h1>Crear cuenta</h1>
+
+    <form [formGroup]="formRegistro" (ngSubmit)="registrarse()">
+      <div class="fila">
+        <div class="campo">
+          <label for="nombre">Nombre</label>
+          <input id="nombre" type="text" formControlName="nombre">
+          @if (mostrarError('nombre')) {
+            <p class="error">Ingresá tu nombre.</p>
+          }
+        </div>
+        <div class="campo">
+          <label for="apellido">Apellido</label>
+          <input id="apellido" type="text" formControlName="apellido">
+          @if (mostrarError('apellido')) {
+            <p class="error">Ingresá tu apellido.</p>
+          }
+        </div>
+      </div>
+
+      <div class="campo">
+        <label for="correo">Correo</label>
+        <input id="correo" type="email" formControlName="correo" placeholder="vos@ejemplo.com">
+        @if (mostrarError('correo')) {
+          <p class="error">Ingresá un correo válido.</p>
+        }
+      </div>
+
+      <div class="campo">
+        <label for="nombreUsuario">Nombre de usuario</label>
+        <input id="nombreUsuario" type="text" formControlName="nombreUsuario">
+        <p class="ayuda">Con este nombre vas a ingresar.</p>
+        @if (mostrarError('nombreUsuario')) {
+          <p class="error">El nombre de usuario debe tener al menos 3 caracteres.</p>
+        }
+      </div>
+
+      <div class="fila">
+        <div class="campo">
+          <label for="password">Contraseña</label>
+          <input id="password" type="password" formControlName="password" (input)="revalidarRepetir()">
+        </div>
+        <div class="campo">
+          <label for="repetirPassword">Repetir contraseña</label>
+          <input id="repetirPassword" type="password" formControlName="repetirPassword">
+          @if (mostrarError('repetirPassword')) {
+            <p class="error">Las contraseñas no coinciden.</p>
+          }
+        </div>
+      </div>
+
+      <!-- Las reglas se ven antes de escribir: cada una se pone verde cuando se cumple -->
+      <ul class="reglas">
+        <li [class.cumplida]="tieneLargo()">Al menos 8 caracteres</li>
+        <li [class.cumplida]="tieneMayuscula()">Al menos una mayúscula</li>
+        <li [class.cumplida]="tieneNumero()">Al menos un número</li>
+      </ul>
+
+      <div class="campo">
+        <label for="fechaNacimiento">Fecha de nacimiento</label>
+        <input id="fechaNacimiento" type="date" formControlName="fechaNacimiento">
+        @if (mostrarError('fechaNacimiento')) {
+          <p class="error">Ingresá una fecha de nacimiento válida.</p>
+        }
+      </div>
+
+      <div class="campo">
+        <label for="descripcion">Descripción breve</label>
+        <textarea id="descripcion" rows="3" formControlName="descripcion"
+          placeholder="Ej.: fan del Atari 2600 y de los arcades de los 80"></textarea>
+        <p class="ayuda">{{ formRegistro.controls.descripcion.value.length }}/200</p>
+        @if (mostrarError('descripcion')) {
+          <p class="error">La descripción puede tener hasta 200 caracteres.</p>
+        }
+      </div>
+
+      <div class="campo">
+        <label for="imagen">Imagen de perfil</label>
+        <div class="imagen">
+          @if (vistaPrevia()) {
+            <img [src]="vistaPrevia()" alt="Vista previa de tu imagen de perfil">
+          } @else {
+            <div class="sin-imagen">?</div>
+          }
+          <input id="imagen" type="file" accept="image/*" (change)="elegirImagen($event)">
+        </div>
+      </div>
+
+      @if (mensaje()) {
+        <p class="error mensaje">{{ mensaje() }}</p>
+      }
+
+      <button type="submit" [disabled]="formRegistro.invalid || enviando()">
+        {{ enviando() ? 'Creando...' : 'Crear cuenta' }}
+      </button>
+    </form>
+
+    <p class="pie">¿Ya tenés cuenta? <a routerLink="/login">Ingresá</a></p>
+  }
 </section>
