@@ -1,4 +1,31 @@
-<section class="panel">
-  <h1>Mi perfil</h1>
-  <p class="ayuda">Acá van tus datos y tus últimas publicaciones (paso 9).</p>
-</section>
+@if (auth.usuario(); as usuario) {
+  <section class="perfil">
+    <div class="panel datos">
+      @if (usuario.imagenUrl) {
+        <img class="foto" [src]="usuario.imagenUrl" alt="Tu imagen de perfil">
+      } @else {
+        <div class="foto">{{ usuario.nombreUsuario.charAt(0).toUpperCase() }}</div>
+      }
+
+      <div>
+        <h1>{{ usuario.nombre }} {{ usuario.apellido }}</h1>
+        <p class="nombre-usuario">&#64;{{ usuario.nombreUsuario }}</p>
+        @if (usuario.descripcion) {
+          <p>{{ usuario.descripcion }}</p>
+        }
+        <ul class="detalles">
+          <li>Correo: {{ usuario.correo }}</li>
+          <!-- 'UTC': la fecha se guardó a las 00:00 UTC; sin esto, en Argentina se vería un día antes -->
+          <li>Nacimiento: {{ usuario.fechaNacimiento | date: 'dd/MM/yyyy' : 'UTC' }}</li>
+          <li>En RuloSocial desde: {{ usuario.createdAt | date: 'dd/MM/yyyy' }}</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="ultimas">
+      <h2>Mis últimas publicaciones</h2>
+      <!-- Sprint 2: las últimas 3 con sus comentarios (GET /publicaciones con usuarioId y limit 3) -->
+      <p class="panel ayuda">Todavía no publicaste nada. ¡Contale a la comunidad a qué estás jugando!</p>
+    </div>
+  </section>
+}

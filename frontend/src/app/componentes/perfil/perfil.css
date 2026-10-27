@@ -1,0 +1,46 @@
+.perfil {
+	max-width: 680px;
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+}
+
+.datos {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1.5rem;
+	align-items: flex-start;
+}
+
+.datos h1 {
+	margin-bottom: 0.3rem;
+}
+
+.foto {
+	width: 120px;
+	height: 120px;
+	flex-shrink: 0;
+	display: grid;
+	place-items: center;
+	border: 2px solid var(--primario);
+	box-shadow: 4px 4px 0 var(--primario-oscuro);
+	background-color: var(--fondo);
+	font-family: var(--fuente-pixel);
+	font-size: 2rem;
+	color: var(--primario);
+	object-fit: cover;
+}
+
+.nombre-usuario {
+	color: var(--acento);
+	margin-top: 0;
+}
+
+.detalles {
+	list-style: none;
+	padding: 0;
+	margin: 0.8rem 0 0;
+	color: var(--texto-suave);
+	font-size: 0.85rem;
+}

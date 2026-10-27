@@ -1,4 +1,29 @@
-<section>
-  <h1>Publicaciones</h1>
-  <p class="ayuda">Acá va el feed de publicaciones (paso 9).</p>
+<section class="feed">
+  <div class="encabezado">
+    <h1>Publicaciones</h1>
+    <div class="orden">
+      <label for="orden">Ordenar por</label>
+      <select id="orden" (change)="cambiarOrden($event)">
+        <option value="fecha">Más recientes</option>
+        <option value="meGusta">Más "me gusta"</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Maqueta del alta: se conecta con el POST /publicaciones en el sprint 2 -->
+  <div class="panel nueva">
+    <h2>Nueva publicación</h2>
+    <input type="text" placeholder="Título" disabled>
+    <textarea rows="3" placeholder="¿Qué jugaste hoy?" disabled></textarea>
+    <p class="ayuda">Muy pronto vas a poder publicar.</p>
+  </div>
+
+  @for (publicacion of publicacionesOrdenadas(); track publicacion._id) {
+    <app-tarjeta-publicacion
+      [publicacion]="publicacion"
+      [meGustaDado]="yaDioMeGusta(publicacion)"
+      (alternarMeGusta)="alternarMeGusta($event)" />
+  } @empty {
+    <p class="ayuda">Todavía no hay publicaciones.</p>
+  }
 </section>

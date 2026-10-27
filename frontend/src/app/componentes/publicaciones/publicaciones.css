@@ -1,0 +1,44 @@
+.feed {
+	max-width: 680px;
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem;
+}
+
+.encabezado {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-end;
+	justify-content: space-between;
+	gap: 1rem;
+}
+
+.encabezado h1 {
+	margin: 0;
+}
+
+.orden select {
+	width: auto;
+}
+
+.nueva {
+	display: flex;
+	flex-direction: column;
+	gap: 0.8rem;
+}
+
+.nueva h2,
+.nueva p {
+	margin: 0;
+}
+
+.nueva input:disabled,
+.nueva textarea:disabled {
+	opacity: 0.6;
+	cursor: not-allowed;
+}
+
+textarea {
+	resize: none;
+}

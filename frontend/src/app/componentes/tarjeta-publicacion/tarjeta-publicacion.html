@@ -1,0 +1,27 @@
+<article class="panel tarjeta">
+  <header>
+    @if (publicacion()?.usuario?.imagenUrl) {
+      <img class="avatar" [src]="publicacion()?.usuario?.imagenUrl" alt="">
+    } @else {
+      <!-- Sin foto: la inicial del usuario en un cuadrado pixelado -->
+      <div class="avatar">{{ publicacion()?.usuario?.nombreUsuario?.charAt(0)?.toUpperCase() }}</div>
+    }
+    <div>
+      <p class="autor">&#64;{{ publicacion()?.usuario?.nombreUsuario }}</p>
+      <p class="fecha">{{ publicacion()?.createdAt | date: 'dd/MM/yyyy HH:mm' }}</p>
+    </div>
+  </header>
+
+  <h2>{{ publicacion()?.titulo }}</h2>
+  <p class="mensaje">{{ publicacion()?.mensaje }}</p>
+
+  @if (publicacion()?.imagenUrl) {
+    <img class="imagen" [src]="publicacion()?.imagenUrl" alt="Imagen de la publicación">
+  }
+
+  <footer>
+    <button class="me-gusta" [class.dado]="meGustaDado()" (click)="darMeGusta()">
+      {{ meGustaDado() ? '♥' : '♡' }} {{ publicacion()?.meGusta?.length }}
+    </button>
+  </footer>
+</article>
