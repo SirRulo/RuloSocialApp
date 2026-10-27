@@ -1,0 +1,18 @@
+<!-- Joystick pixelado de RuloSocial: grilla de 16x16, cada rect es un "pixel" -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" shape-rendering="crispEdges">
+  <rect width="16" height="16" fill="#0a0a12"/>
+  <!-- bocha -->
+  <rect x="6" y="1" width="4" height="1" fill="#ff4f8b"/>
+  <rect x="5" y="2" width="6" height="3" fill="#ff4f8b"/>
+  <rect x="6" y="5" width="4" height="1" fill="#ff4f8b"/>
+  <rect x="6" y="2" width="2" height="1" fill="#ffd0e0"/>
+  <!-- palanca -->
+  <rect x="7" y="6" width="2" height="4" fill="#e8e6ff"/>
+  <!-- base -->
+  <rect x="2" y="10" width="12" height="1" fill="#a347ff"/>
+  <rect x="1" y="11" width="14" height="3" fill="#a347ff"/>
+  <rect x="1" y="14" width="14" height="1" fill="#5b1fa8"/>
+  <!-- botón -->
+  <rect x="11" y="9" width="2" height="1" fill="#ff4f8b"/>
+  <rect x="3" y="12" width="2" height="1" fill="#141530"/>
+</svg>
