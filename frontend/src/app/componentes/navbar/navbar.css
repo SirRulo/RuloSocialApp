@@ -26,7 +26,17 @@
 .links {
 	display: flex;
 	flex-wrap: wrap;
+	align-items: center;
 	gap: 1.2rem;
+}
+
+.usuario {
+	color: var(--acento);
+}
+
+.links button {
+	padding: 0.5rem 0.8rem;
+	font-size: 0.6rem;
 }
 
 .links a {

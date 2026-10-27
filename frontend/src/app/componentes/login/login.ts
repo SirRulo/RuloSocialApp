@@ -38,8 +38,9 @@ export class Login implements OnDestroy {
     this.mensaje.set('');
 
     this.suscripcion = this.auth.login(this.loginModel()).subscribe({
-      next: () => {
+      next: (usuario) => {
         this.enviando.set(false);
+        this.auth.iniciarSesion(usuario);
         this.router.navigate(['/publicaciones']);
       },
       error: (error: HttpErrorResponse) => {
